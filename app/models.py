@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Project(models.Model):
+class Auditor(models.Model):
     image=models.ImageField(upload_to='images/', null=True, blank=True)
     title=models.CharField(max_length=30)
     description=models.TextField(max_length=100)
