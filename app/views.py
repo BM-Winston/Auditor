@@ -18,7 +18,7 @@ class AuditorView(APIView):
         serializers = AuditorSerializer(all_auditor, many=True)
         return Response(serializers.data)
 
-def post(self, request, format=None):
+    def post(self, request, format=None):
         # post method will be triggered when we are getting form data
         serializers = AuditorSerializer(data=request.data)
         # serialize the data in the request
