@@ -13,6 +13,7 @@ urlpatterns = [
     path('add_post/', views.add_post, name='add_post'),
     path('profile/', views.profile, name='profile'),
     path('api_key/', views.api_key, name='api_key'),
+    path('api/profile/', views.ProfileView.as_view()),
 
 
 ]

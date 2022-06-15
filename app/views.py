@@ -76,3 +76,27 @@ class AuditorView(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors,) 
+
+
+class ProfileView(APIView):
+     #base class for our API view function.
+    def get(self, request, format=None):
+
+        #define a get method 
+        all_auditor = Auditor.objects.all()
+
+        #serialize the Django model objects 
+        serializers = AuditorSerializer(all_auditor, many=True)
+        return Response(serializers.data)
+
+    def post(self, request, format=None):
+        
+        serializers = AuditorSerializer(data=request.data)
+
+        # serialize the data in the request
+        if serializers.is_valid():
+
+            
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors,) 
