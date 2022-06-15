@@ -11,7 +11,7 @@ import email
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import User, Auditor,Profile
-from django.views.decorators.csrf import csrf_exempt
+
 
 # Create your views here.
 def home(request):
@@ -30,7 +30,6 @@ def signup(request):
     return render(request,'registration/signup.html',{'form':form})
 
 
-@csrf_exempt
 def login(request):
     if request.method == 'POST':
        
@@ -56,20 +55,24 @@ def add_post(request):
 
 
 class AuditorView(APIView):
-     #APIView as a base class for our API view function.
+     #base class for our API view function.
     def get(self, request, format=None):
-        #define a get method where we query the database to get all the MoringaMerchobjects
+
+        #define a get method 
         all_auditor = Auditor.objects.all()
-        #serialize the Django model objects and return the serialized data as a response.
+
+        #serialize the Django model objects 
         serializers = AuditorSerializer(all_auditor, many=True)
         return Response(serializers.data)
 
     def post(self, request, format=None):
-        # post method will be triggered when we are getting form data
+        
         serializers = AuditorSerializer(data=request.data)
+
         # serialize the data in the request
         if serializers.is_valid():
-            # If valid we save the new data to the database and return the appropriate status code.
+
+            
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors,) 
