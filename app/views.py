@@ -1,13 +1,59 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from .models import  Auditor
 from .serializer import AuditorSerializer
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from app.forms import RegisterForm, AuditorForm
+import email
+from django.contrib.auth.models import User
+from django.contrib import messages
+from .models import User, Auditor,Profile
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()   
+
+        return redirect('login')
+    else:    
+        form = RegisterForm()
+    return render(request,'registration/signup.html',{'form':form})
+
+
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+       
+        return redirect('auditor')
+
+   
+    return render(request,'registration/login.html')
+
+
+@login_required(login_url='/accounts/login/') 
+def add_post(request):
+    if request.method == 'POST':
+        form = AuditorForm(request.POST, request.FILES)
+        if form.is_valid():
+            post=form.save(commit=False)
+            post.save()
+       
+        return redirect('auditor')
+    else:
+        form=AuditorForm()
+
+        return render(request,'add_post.html',{'form':form} )
+
 
 class AuditorView(APIView):
      #APIView as a base class for our API view function.
