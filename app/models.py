@@ -18,6 +18,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User,primary_key=True, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='profile_pics/', null=True)
     bio = models.TextField()
+    email=models.EmailField()
 
 
     def __str__(self):
