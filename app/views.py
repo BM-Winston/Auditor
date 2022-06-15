@@ -51,6 +51,8 @@ def profile(request):
     else:
         return redirect('login')
 
+def api_key(request):
+    return render(request,'api_key.html')
 
 class AuditorView(APIView):
      #base class for our API view function.
