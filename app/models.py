@@ -19,6 +19,7 @@ class Profile(models.Model):
     image = models.ImageField(upload_to='profile_pics/', null=True)
     bio = models.TextField()
     email=models.EmailField()
+    auditor =models.ForeignKey('Auditor',on_delete=models.CASCADE, null=True)
 
 
     def __str__(self):
