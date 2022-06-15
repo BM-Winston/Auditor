@@ -5,8 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('api/auditor/', views.AuditorView.as_view()),
-    path('signup/',views.home,name = 'home'),
-    path('', views.signup, name='signup'),
+    path('',views.home,name = 'home'),
+    path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('account/', include('django.contrib.auth.urls')), 

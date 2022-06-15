@@ -30,14 +30,6 @@ def signup(request):
     return render(request,'registration/signup.html',{'form':form})
 
 
-def login(request):
-    if request.method == 'POST':
-       
-        return redirect('auditor')
-
-   
-    return render(request,'registration/login.html')
-
 
 @login_required(login_url='/accounts/login/') 
 def add_post(request):
