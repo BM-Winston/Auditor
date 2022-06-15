@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from .models import  Auditor
-from .serializer import AuditorSerializer
+from .serializer import AuditorSerializer, ProfileSerializer
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from app.forms import RegisterForm, AuditorForm
@@ -54,6 +54,19 @@ def profile(request):
 def api_key(request):
     return render(request,'api_key.html')
 
+@login_required(login_url='/accounts/login/')
+def add_project(request):
+    if request.method=='POST':
+        form = AuditorForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+
+            return redirect('home')
+    else:
+        form = AuditorForm()
+    return render(request,'add_project.html',{'form':form}) 
+
 class AuditorView(APIView):
      #base class for our API view function.
     def get(self, request, format=None):
@@ -83,15 +96,15 @@ class ProfileView(APIView):
     def get(self, request, format=None):
 
         #define a get method 
-        all_auditor = Auditor.objects.all()
+        all_auditor = Profile.objects.all()
 
         #serialize the Django model objects 
-        serializers = AuditorSerializer(all_auditor, many=True)
+        serializers = ProfileSerializer(all_auditor, many=True)
         return Response(serializers.data)
 
     def post(self, request, format=None):
         
-        serializers = AuditorSerializer(data=request.data)
+        serializers = ProfileSerializer(data=request.data)
 
         # serialize the data in the request
         if serializers.is_valid():
