@@ -62,10 +62,16 @@ def add_project(request):
             post = form.save(commit=False)
             post.save()
 
-            return redirect('home')
+            return redirect('projects')
     else:
         form = AuditorForm()
-    return render(request,'add_project.html',{'form':form}) 
+    return render(request,'add_project.html',{'form':form})
+
+
+def projects(request):
+    return render(request,'projects.html')
+
+
 
 class AuditorView(APIView):
      #base class for our API view function.

@@ -20,6 +20,7 @@ class Profile(models.Model):
     bio = models.TextField()
     email=models.EmailField(null=True)
     auditor =models.ForeignKey('Auditor',on_delete=models.CASCADE, null=True)
+    score= models.IntegerField(default=0)
 
 
     def __str__(self):

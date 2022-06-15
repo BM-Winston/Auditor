@@ -15,6 +15,8 @@ urlpatterns = [
     path('api_key/', views.api_key, name='api_key'),
     path('api/profile/', views.ProfileView.as_view()),
     path('add_project/', views.add_project, name='add_project'),
+    path('projects/', views.projects, name='projects'),
+
     
 
 
