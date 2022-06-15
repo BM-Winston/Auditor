@@ -45,6 +45,12 @@ def add_post(request):
 
         return render(request,'add_post.html',{'form':form} )
 
+def profile(request):
+    if request.user.is_authenticated:
+        return render(request,'profile.html')
+    else:
+        return redirect('login')
+
 
 class AuditorView(APIView):
      #base class for our API view function.
