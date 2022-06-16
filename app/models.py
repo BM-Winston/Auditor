@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Auditor(models.Model):
-    image=models.ImageField(upload_to='images/', null=True, blank=True)
+    image=models.ImageField(upload_to='images/',null=True)
     title=models.CharField(max_length=30)
     description=models.TextField(max_length=100)
     url= models.URLField(max_length=200)

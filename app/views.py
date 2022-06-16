@@ -69,7 +69,9 @@ def add_project(request):
 
 
 def projects(request):
-    return render(request,'projects.html')
+
+    auditor = Auditor.objects.all()
+    return render(request,'projects.html',{'auditor':auditor})
 
 
 

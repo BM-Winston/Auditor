@@ -1,0 +1,19 @@
+h1{
+    color: aqua;
+    text-align: center;
+    text-shadow: 6rem;
+    padding: 7%;
+}
+
+footer{
+
+    background-color: rgb(51, 7, 11);
+    color: rgb(250, 235, 235);
+    text-align: center;
+    margin-top: 90%;
+}
+
+body{
+    background-color: rgb(78, 68, 10);
+
+}
