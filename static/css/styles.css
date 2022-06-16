@@ -1,5 +1,5 @@
 h1{
-    color: aqua;
+    color: rgb(240, 235, 235);
     text-align: center;
     text-shadow: 6rem;
     padding: 7%;
@@ -10,20 +10,41 @@ footer{
     background-color: rgb(51, 7, 11);
     color: rgb(250, 235, 235);
     text-align: center;
-    margin-top: 90%;
+    margin-top: 20%;
 }
 
 body{
     background-color: rgb(78, 68, 10);
     font-family: 'Mogra', cursive;
-
+    background-image: url(/static/assets//photo-1609619385076-36a873425636.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
 }
 
 .card{
-    padding: 8%;
+    padding: 9%;    
+    border-radius: 2vw;
+
 }
 
 #project{
     margin:  25% 25%;
     margin-top: 5%;
+    
+}
+
+.group{
+    border: solid 0.5  rgba(85, 28, 122, 0.938);
+    border-radius: 2vw;
+    border-style: dotted;
+    background-color: rgb(23, 40, 94);
+    padding: 13%;
+    margin: 25%;
+    margin-top: 3%;
+}
+
+h3{
+    color: white;
 }
