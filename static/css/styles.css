@@ -15,5 +15,15 @@ footer{
 
 body{
     background-color: rgb(78, 68, 10);
+    font-family: 'Mogra', cursive;
 
+}
+
+.card{
+    padding: 8%;
+}
+
+#project{
+    margin:  25% 25%;
+    margin-top: 5%;
 }
