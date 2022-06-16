@@ -9,9 +9,23 @@ class Auditor(models.Model):
     description=models.TextField(max_length=100)
     url= models.URLField(max_length=200)
 
-
     def __str__(self):
         return self.title
+
+    def save_auditor(self):
+        self.save()
+
+    def delete_auditor(self):
+        self.delete()
+
+    def update_auditor(self):
+        
+        self.update()
+
+    @classmethod
+    def get_auditor(cls):
+        auditor=cls.objects.all()
+        return auditor
 
 
 class Profile(models.Model):
