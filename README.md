@@ -54,36 +54,4 @@ python manage.py makemigrations app
  python manage.py runserver 
 ``` 
 
-##### Tests 
- ```bash 
- python manage.py test 
-```
-
-Open application at '127.0.0.1.8000' at your web browser
-
-
-
-## Technologies Used
-
-* Python
-* Django
-* Heroku
-* HTML
-* CSS
-
-# Known Bugs
-
-
-## License
-
-
-Authors Information
-
-[musasiawinston@gmail.com]
-
-Winston Musasia (c) 2022
-
-
-[Go Back to the top](#Auditor)
-
-
+ogin
