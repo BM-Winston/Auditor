@@ -1,1 +1,1 @@
-web: gunicorn app.wsgi --log-file -
+web: gunicorn app.wsgi --log-file -heroku pg:push <The name of the db in the local psql> DATABASE_URL --app <heroku-app>
