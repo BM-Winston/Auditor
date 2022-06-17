@@ -7,6 +7,7 @@
 [Winston Musasia]
 
 # Description
+This is a web application where a user can view my projects as well as create one.
 
 .
 
@@ -42,7 +43,7 @@ python3 -m venv virtual - source virtual/bin/activate
  ##### Database  
   SetUp your database. Add user and password, host then make migrations. 
  ```bash 
-python manage.py makemigrations instaclone
+python manage.py makemigrations app
  ``` 
  Now Migrate  
  ```bash 
