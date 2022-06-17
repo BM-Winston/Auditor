@@ -1,16 +1,18 @@
 from django.shortcuts import render,redirect
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .models import  Auditor
 from .serializer import AuditorSerializer, ProfileSerializer
+
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from app.forms import RegisterForm, AuditorForm
 import email
-from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import User, Auditor,Profile
+from .models import Auditor,Profile
+
 
 
 # Create your views here.
@@ -45,14 +47,14 @@ def add_post(request):
 
         return render(request,'add_post.html',{'form':form} )
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     if request.user.is_authenticated:
         return render(request,'profile.html')
     else:
         return redirect('login')
 
-def api_key(request):
-    return render(request,'api_key.html')
+
 
 @login_required(login_url='/accounts/login/')
 def add_project(request):
@@ -68,11 +70,22 @@ def add_project(request):
     return render(request,'add_project.html',{'form':form})
 
 
+@login_required(login_url='/accounts/login/')
 def projects(request):
 
     auditor = Auditor.objects.all()
     return render(request,'projects.html',{'auditor':auditor})
 
+@login_required(login_url='/accounts/login/')
+def search_projects(request):
+    if 'flask' in request.GET and request.GET['flask']:
+        searchTerm = request.GET.get('flask')
+        auditorResults = Auditor.search_auditor(searchTerm)     
+        return render(request,'search.html',{'results':auditorResults})
+
+    else:
+        message = 'You have not searched for any term'
+        return render(request,'search.html',{'message':message})
 
 
 class AuditorView(APIView):

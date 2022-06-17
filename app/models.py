@@ -19,13 +19,13 @@ class Auditor(models.Model):
         self.delete()
 
     def update_auditor(self):
-        
+
         self.update()
 
     @classmethod
-    def get_auditor(cls):
-        auditor=cls.objects.all()
-        return auditor
+    def search_auditor(cls,searchTerm):
+        titles=cls.objects.filter(title__icontains=searchTerm)
+        return titles
 
 
 class Profile(models.Model):
@@ -39,6 +39,18 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
+    def update_profile(self):
+        self.update()
+
+        
 
 
 
