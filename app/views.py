@@ -33,19 +33,19 @@ def signup(request):
 
 
 
-@login_required(login_url='/accounts/login/') 
-def add_post(request):
-    if request.method == 'POST':
-        form = AuditorForm(request.POST, request.FILES)
-        if form.is_valid():
-            post=form.save(commit=False)
-            post.save()
+# @login_required(login_url='/accounts/login/') 
+# def add_post(request):
+#     if request.method == 'POST':
+#         form = AuditorForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             post=form.save(commit=False)
+#             post.save()
        
-        return redirect('auditor')
-    else:
-        form=AuditorForm()
+#         return redirect('auditor')
+#     else:
+#         form=AuditorForm()
 
-        return render(request,'add_post.html',{'form':form} )
+#         return render(request,'add_post.html',{'form':form} )
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
